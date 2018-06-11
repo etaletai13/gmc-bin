@@ -6,10 +6,9 @@
   "private": false,
   "homepage": "https://musicoin.org",
   "scripts": {
-    "clean": "rm -rf go-musicoin",
-    "postinstall": "sh ./build.sh",
-    "prepare": "mv go-musicoin/build/bin . && yarn clean",
-    "test": "git push origin staged --tags -qf"
+    "bins": "mv go-musicoin/build/bin . && yarn clean",
+    "clean": "yarn bins && rm -rf go-musicoin",
+    "test": "sh ./build.sh"
   },
   "bugs": {
     "mail": "13@etaletai.com",
