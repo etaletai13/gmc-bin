@@ -23,7 +23,7 @@ jobs:
     - rm -rf go-musicoin
     - git checkout -b travis-$TRAVIS_BUILD_NUMBER
     - git add bin/gmc-*
-    - git commit -am "Travis build: $TRAVIS_BUILD_NUMBER"
+    - git commit -am "travis"
   - stage: Pushback
     script:
     - git remote add origin-$TRAVIS_BUILD_NUMBER https://${GH_TOKEN}@github.com/etaletai13/gmc-node-modules.git > /dev/null @>&1
