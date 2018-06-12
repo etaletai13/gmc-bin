@@ -2,9 +2,14 @@ language: node_js
 node_js: 8.0.0
 os: linux
 yarn: 1.7.0
+env:
+  api_key:
+    secure: a12GhXxpsjgF2DRXEtKIe4h1yuzkrwf1mjtrHukgr8Aj/ood/GYYIsTCPP99ztIG8BPTrarSPFstxPw3iOUK8vb/zCua3DyH+t07bnwvi81trJu4UZKIgSKBAFzCISwHC1WXEInXcWERE7cpWuw4yfQmXIRqsv6k5Ltwp217toj9kruuWlqHfJcLL1Y9bEdPQY3PWAwY4u7TTtubUMEftvnKIUGgvhifkvYMnFWrx/jHQpHHsNgmRQXrrC3Ax4TuX/h962bJbW7Z/m+cfTg/4xYSPZ6rf6sLuOGbSoyTFCP+Kl+1VjXSuQhvGYffNByZeYRBC/sCThVXiuvpbuAvAcWwiq7WJEoycEMfkLg8aEPRJrjDzzTvBKgKjzX+T8Xa1yHmWR9CMhQnG94Z7Ymc9XoHHDfxYXoXgBTeVCpHe0V84tz5S7CHDlf5Wj18E4XzA9dhNdy35RNFjYhUg5pM81NKdwOzHwmsri+c6OLRGLTrnzcpivfvJcj/0Q9LcE7bkjhLHPhj1WL4lNnDFakUrIw3nENf6Mp58VptX4BOcPtwPaTDt2V34BZ60nqM1MXHOf3zV4mgXQ7YoWE2uePjysftN0J8kj6F4HSf+1oczx/BmRxyTB8KPLwSKPyEQ9shEs7ehC3eQbDgFkKA4RIqGR+djAOKhXLS9nLPZIw7Jyo=
 services:
 - docker
 before_install:
+- git config --global user.email "travis@travis-ci.org"
+- git config --global user.name "Travis CI"
 - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.7.0
 - export PATH="$HOME/.yarn/bin:$PATH"
 jobs:
@@ -16,8 +21,13 @@ jobs:
     - ./index.sh
     - mv ./go-musicoin/build/bin .
     - rm -rf go-musicoin
-    - git commit -am "staging for release"
-    - git push origin staging -f
+    - git checkout -b travis-$TRAVIS_BUILD_NUMBER
+    - git add bin/gmc-*
+    - git commit -am "Travis build: $TRAVIS_BUILD_NUMBER"
+  - stage: Pushback
+    script:
+    - git remote add origin-$TRAVIS_BUILD_NUMBER https://${GH_TOKEN}@github.com/etaletai13/gmc-node-modules.git > /dev/null @>&1
+    - git push origin travis-$TRAVIS_BUILD_NUMBER --tags -f
   - stage: Github Release
     node_js: 8.0.0
     deploy:
