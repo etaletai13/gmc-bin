@@ -15,11 +15,11 @@
     "url": "https://github.com/Musicoin/gmc-node-modules.git"
   },
   "bin": {
-    "gmc-linux-386": "./go-musicoin/build/bin/gmc-linux-386",
-    "gmc-linux": "./go-musicoin/build/bin/gmc-linux-amd64",
-    "gmc-mac": "./go-musicoin/build/bin/gmc-darwin-10.6-amd64",
-    "gmc-windows-386": "./go-musicoin/build/bin/gmc-windows-4.0-386.exe",
-    "gmc-windows": "./go-musicoin/build/bin/gmc-windows-4.0-amd64.exe"
+    "gmc-linux-386": "./bin/gmc-linux-386",
+    "gmc-linux": "./bin/gmc-linux-amd64",
+    "gmc-mac": "./bin/gmc-darwin-10.6-amd64",
+    "gmc-windows-386": ".//bin/gmc-windows-4.0-386.exe",
+    "gmc-windows": "./bin/gmc-windows-4.0-amd64.exe"
   },
   "engines": {
     "yarn": ">=1.7.0"
