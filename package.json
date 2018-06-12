@@ -40,6 +40,7 @@
     "patch": "sed -i.tmp 's/1.7/1.10/g' ./go-musicoin/build/ci.go",
     "build": "sh ./index.sh",
     "prepublish": "yarn pre && yarn patch && yarn build",
-    "test": "echo 'test'"
+    "test": "echo 'test'",
+    "push-release": "git add -A && git commit -am \"release\" && git branch -d release && git checkout -b \"release\" && git tag \"v1.0.0-beta\""
   }
 }
