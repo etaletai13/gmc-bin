@@ -13,11 +13,13 @@ deploy:
   api_key:
     secure: W4Qv5Ef17pVq/4i83sLOGmJ1g++w3SLNp9VOzn56SOUU0qL3aQJqlKjIE5P4FhbFuf1Rq61dgh1flMHypLCk9yDGy6OuSwmoV92PGDjec5rxdzLdRLvgc3M/IvOHhaHZlLv93kOtFz372Py6SMi/CvHKz/ovsPucPY9BML0XlGxtJGsqrUiEPro3z/mkr+R9c8nsbJH3tK8J37smbH0ys/jhhui0gidQy/iU1Yh+Lb4Ak6FHDjAlNgEA5Kqh+6zs9p2XdzgIs6oR7hyZQC32odnWwQhwy+sz3IB4uy5la1F7a/nm8x1c3mCAQiqiOd41sKX4yIEwbhU0T1ICWaKVEdgJQfZ+8TtcCWIjnmW0WKgQK4GMuzlTL/vSkPi5GgbWzbAgXiYda+/TncbSjhfuUixEbvEdS22B/bpqQTF3n/+lg8bWboyojVpxXdEEQCuyEMHA3+aJTUBCYE5AISRq50Rcoh7lY4NhtTbkuZ/sJGKxTeLt2vE/XWRkN7ISFRvbA8ItiFEhbQQPqMDdW+SE0M5EMFZyF+cfR2Eusuf6bAGlH7aq1/7ITh6uourfqJPTsMFzq8nbCDkKpOejMPw7KhX+Ivh4D8SdsggFGreFT9LPkYr+T/eXq9DJaUTuYiJxe8PsXmNEXsWNnK5N5IfPhbI/EYp8ok45eJJ76tnyacc=
   skip_cleanup: true
-  file_glob: true
   script:
   - git add -A
   - git commit -am "release"
+  - git branch -d "release"
+  - git checkout -b "release"
   - git tag "v1.0.0-beta"
   - git push origin -f --tags
   on:
-    branch: staging
+    branch: all
+    tags: true
