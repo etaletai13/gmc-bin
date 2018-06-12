@@ -1,6 +1,6 @@
 os: linux
 language: node_js
-node: 8.0.0
+node_js: 8.0.0
 yarn: 1.7.0
 go: 1.10.x
 services:
