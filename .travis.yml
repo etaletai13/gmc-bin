@@ -1,4 +1,4 @@
-os: linux
+dist: trusty
 language: node_js
 node_js: 8.0.0
 yarn: 1.7.0
@@ -6,6 +6,7 @@ go: 1.10.x
 cache: apt
 env:
   global:
+    - secure: W4Qv5Ef17pVq/4i83sLOGmJ1g++w3SLNp9VOzn56SOUU0qL3aQJqlKjIE5P4FhbFuf1Rq61dgh1flMHypLCk9yDGy6OuSwmoV92PGDjec5rxdzLdRLvgc3M/IvOHhaHZlLv93kOtFz372Py6SMi/CvHKz/ovsPucPY9BML0XlGxtJGsqrUiEPro3z/mkr+R9c8nsbJH3tK8J37smbH0ys/jhhui0gidQy/iU1Yh+Lb4Ak6FHDjAlNgEA5Kqh+6zs9p2XdzgIs6oR7hyZQC32odnWwQhwy+sz3IB4uy5la1F7a/nm8x1c3mCAQiqiOd41sKX4yIEwbhU0T1ICWaKVEdgJQfZ+8TtcCWIjnmW0WKgQK4GMuzlTL/vSkPi5GgbWzbAgXiYda+/TncbSjhfuUixEbvEdS22B/bpqQTF3n/+lg8bWboyojVpxXdEEQCuyEMHA3+aJTUBCYE5AISRq50Rcoh7lY4NhtTbkuZ/sJGKxTeLt2vE/XWRkN7ISFRvbA8ItiFEhbQQPqMDdW+SE0M5EMFZyF+cfR2Eusuf6bAGlH7aq1/7ITh6uourfqJPTsMFzq8nbCDkKpOejMPw7KhX+Ivh4D8SdsggFGreFT9LPkYr+T/eXq9DJaUTuYiJxe8PsXmNEXsWNnK5N5IfPhbI/EYp8ok45eJJ76tnyacc=
     - GIT_NAME: Travis CI
     - GIT_EMAIL: builds@travis-ci.org
     - TRAVIS_REPO_SLUG: etaletai13/gmc-node-modules
@@ -18,16 +19,21 @@ before_install:
 - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.7.0
 - export PATH="$HOME/.yarn/bin:$PATH"
 - git clone https://github.com/Musicoin/go-musicoin
-script: 
 - sed -i.tmp 's/1.7/1.10/g' ./go-musicoin/build/ci.go
-- sh index.sh 
+- sh index.sh
+- mv ./go-musicoin/build/bin .
+- rm -rf ./go-musicoin
+script:
+- ./changefile.sh
+before_deploy:
+- ./deploy.sh
 deploy:
   provider: releases
   api_key:
     secure: W4Qv5Ef17pVq/4i83sLOGmJ1g++w3SLNp9VOzn56SOUU0qL3aQJqlKjIE5P4FhbFuf1Rq61dgh1flMHypLCk9yDGy6OuSwmoV92PGDjec5rxdzLdRLvgc3M/IvOHhaHZlLv93kOtFz372Py6SMi/CvHKz/ovsPucPY9BML0XlGxtJGsqrUiEPro3z/mkr+R9c8nsbJH3tK8J37smbH0ys/jhhui0gidQy/iU1Yh+Lb4Ak6FHDjAlNgEA5Kqh+6zs9p2XdzgIs6oR7hyZQC32odnWwQhwy+sz3IB4uy5la1F7a/nm8x1c3mCAQiqiOd41sKX4yIEwbhU0T1ICWaKVEdgJQfZ+8TtcCWIjnmW0WKgQK4GMuzlTL/vSkPi5GgbWzbAgXiYda+/TncbSjhfuUixEbvEdS22B/bpqQTF3n/+lg8bWboyojVpxXdEEQCuyEMHA3+aJTUBCYE5AISRq50Rcoh7lY4NhtTbkuZ/sJGKxTeLt2vE/XWRkN7ISFRvbA8ItiFEhbQQPqMDdW+SE0M5EMFZyF+cfR2Eusuf6bAGlH7aq1/7ITh6uourfqJPTsMFzq8nbCDkKpOejMPw7KhX+Ivh4D8SdsggFGreFT9LPkYr+T/eXq9DJaUTuYiJxe8PsXmNEXsWNnK5N5IfPhbI/EYp8ok45eJJ76tnyacc=
   skip_cleanup: true
   file_glob: true
-  file: **/*
+  file: ./bin/*
   on:
     repo: etaletai13/gmc-node-modules
     all_branches: true
