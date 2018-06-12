@@ -40,5 +40,6 @@
     "patch": "sed -i.tmp 's/1.7/1.10/g' ./go-musicoin/build/ci.go",
     "build": "sh ./index.sh",
     "prepublish": "yarn pre && yarn patch && yarn build"
+    "test": "echo 'test'"
   }
 }
