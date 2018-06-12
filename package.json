@@ -35,6 +35,7 @@
     "wallet"
   ],
   "scripts": {
+    "preinstall": "git tag -d $(git tag)",
     "test": "ls bin"
   }
 }
