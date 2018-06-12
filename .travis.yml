@@ -37,4 +37,4 @@ deploy:
   on:
     repo: etaletai13/gmc-node-modules
     all_branches: true
-    tags: false
+    tags: true
