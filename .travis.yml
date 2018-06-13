@@ -1,23 +1,18 @@
 language: node_js
-os: 
- - linux
- - osx
-node_js: 
- - "8"
-yarn: 
- - "1.7.0"
-go: 
- - "1.10.0"
+os: linux
+node_js: 8.0.0
+yarn: 1.7.0
 services:
 - docker
 before_script:
 jobs:
   include:
   - stage: Prebuild
+    go: 1.10.0
     node: 8.0.0
     yarn: 1.7.0
     on:
-      tags: false
+      tags: true
       branches:
         only: staging
     script:
@@ -32,8 +27,8 @@ jobs:
     - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
     - git add bin/gmc-*
     - git commit -am --fixup
-    - git tag "${TRAVIS_BUILD_NUMBER}"
-    - git push origin release --all
+    - git tag "v1.0.0-${TRAVIS_BUILD_NUMBER}"
+    - git push origin "v1.0.0-${TRAVIS_BUILD_NUMBER}" --all
   - stage: Github Release
     deploy:
       provider: releases
@@ -41,7 +36,7 @@ jobs:
       on:
         tags: true
         branches:
-          only: release-${TRAVIS_BUILD_NUMBER}
+          only: master
   - stage: Yarn/NPM Release
     node_js: 8.0.0
     script:
