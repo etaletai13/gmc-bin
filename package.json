@@ -1,0 +1,36 @@
+{
+  "name": "@etaletai13/gmc-bin",
+  "version": "1.0.0",
+  "description": "makes available go-musicoin binaries in node projects",
+  "license": "MIT",
+  "private": false,
+  "homepage": "https://musicoin.org",
+  "bugs": {
+    "mail": "13@etaletai.com",
+    "web": "https://github.com/Musicoin/desktop/issues"
+  },
+  "issues": "https://github.com/Musicoin/desktop/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Musicoin/gmc-node-modules.git"
+  },
+  "os": [ "linux", "win32", "darwin" ],
+  "bin": {
+    "gmc-linux": "./bin/gmc-linux-amd64",
+    "gmc-darwin": "./bin/gmc-darwin-10.6-amd64",
+    "gmc-win32": "./bin/gmc-windows-4.0-amd64.exe"
+  },
+  "keywords": [
+    "blockchain",
+    "crypto",
+    "gmc",
+    "gmc-bin",
+    "go-musicoin",
+    "music",
+    "musicoin",
+    "wallet"
+  ],
+  "scripts": {
+    "test": "ls"
+  }
+}
