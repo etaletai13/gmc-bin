@@ -5,12 +5,6 @@
   "license": "MIT",
   "private": false,
   "homepage": "https://musicoin.org",
-  "scripts": {
-    "clean": "rm -rf go-musicoin",
-    "postinstall": "sh ./build.sh",
-    "prepare": "mv go-musicoin/build/bin . && yarn clean",
-    "test": "git push origin staged --tags -qf"
-  },
   "bugs": {
     "mail": "13@etaletai.com",
     "web": "https://github.com/Musicoin/desktop/issues"
@@ -20,16 +14,11 @@
     "type": "git",
     "url": "https://github.com/Musicoin/gmc-node-modules.git"
   },
+  "os": [ "linux", "win32", "darwin" ],
   "bin": {
-    "gmc-linux-386": "./bin/gmc-linux-386",
     "gmc-linux": "./bin/gmc-linux-amd64",
-    "gmc-mac": "./bin/gmc-darwin-10.6-amd64",
-    "gmc-windows-386": "./bin/gmc-windows-4.0-386.exe",
-    "gmc-windows": "./bin/gmc-windows-4.0-amd64.exe"
-  },
-  "engines": {
-    "node": ">=8.0.0",
-    "yarn": ">=1.7.0"
+    "gmc-darwin": "./bin/gmc-darwin-10.6-amd64",
+    "gmc-win32": "./bin/gmc-windows-4.0-amd64.exe"
   },
   "keywords": [
     "blockchain",
@@ -40,5 +29,8 @@
     "music",
     "musicoin",
     "wallet"
-  ]
+  ],
+  "scripts": {
+    "test": "ls"
+  }
 }
