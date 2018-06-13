@@ -1,14 +1,19 @@
 language: node_js
-os: linux
-node_js: 8.0.0
-yarn: 1.7.0
+os: 
+ - linux
+ - osx
+node_js: 
+ - "8"
+yarn: 
+ - "1.7.0"
+go: 
+ - "1.10.0"
 services:
 - docker
 before_script:
 jobs:
   include:
   - stage: Prebuild
-    go: 1.10.0
     node: 8.0.0
     yarn: 1.7.0
     on:
@@ -22,13 +27,13 @@ jobs:
     - mv ./go-musicoin/build/bin .
     - rm -rf go-musicoin
     after_success:
-    - git checkout -b release-${TRAVIS_BUILD_NUMBER}
+    - git checkout -b release
     - git config credential.helper "store --file=.git/credentials"
     - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
     - git add bin/gmc-*
     - git commit -am --fixup
-    - git tag ${TRAVIS_BUILD_NUMBER}
-    - git push origin release-${TRAVIS_BUILD_NUMBER} --tags -f
+    - git tag "${TRAVIS_BUILD_NUMBER}"
+    - git push origin release --all
   - stage: Github Release
     deploy:
       provider: releases
