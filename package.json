@@ -27,6 +27,10 @@
     "musicoin",
     "wallet"
   ],
+  "engines": {
+    "node": ">=8.0.0",
+    "yarn": ">=1.7.0"
+  },
   "scripts": {
     "prepare": "yarn clean && yarn clone && yarn patch && yarn build && yarn permissions && yarn placement",
     "clean": "rm -rf ./gmc ./go-musicoin",
@@ -36,8 +40,8 @@
     "build.darwin": "cd go-musicoin && make gmc-darwin",
     "build.windows": "cd go-musicoin && make gmc-windows",
     "build.linux": "cd go-musicoin && make gmc-linux-amd64",
-    "permissions": "chmod +x go-musicoin/build/bin/gmc",
-    "placement": "mv go-musicoin/build/bin/gmc .",
+    "permissions": "chmod +x go-musicoin/build/bin/gmc-*",
+    "placement": "mv go-musicoin/build/bin/gmc-* .",
     "test": "ls gmc && rm -rf go-musicoin"
   }
 }
