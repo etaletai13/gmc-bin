@@ -32,7 +32,7 @@
     "yarn": ">=1.0.0"
   },
   "scripts": {
-    "prepare": "yarn clean && yarn clone && yarn patch && yarn build && yarn permissions && yarn placement",
+    "prepare": "yarn clean && yarn clone && yarn patch && yarn build && yarn placement",
     "clean": "rm -rf ./gmc ./go-musicoin",
     "clone": "git clone https://github.com/Musicoin/go-musicoin",
     "patch": "sed -i 's/1.7/1.10/g' go-musicoin/build/ci.go",
@@ -40,7 +40,6 @@
     "build.darwin": "cd go-musicoin && make gmc-darwin",
     "build.windows": "cd go-musicoin && make gmc-windows",
     "build.linux": "cd go-musicoin && make gmc-linux-amd64",
-    "permissions": "chmod +x go-musicoin/build/bin/gmc-*",
     "placement": "mv go-musicoin/build/bin/gmc-* .",
     "test": "ls gmc && rm -rf go-musicoin"
   }
