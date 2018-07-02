@@ -14,3 +14,4 @@ deploy:
   on:
     repo: etaletai13/gmc-bin
     branch: make-for-builds
+    tags: true
