@@ -14,9 +14,9 @@
     "type": "git",
     "url": "https://github.com/Musicoin/gmc-bin.git"
   },
-  "bin": {
-    "gmc": "./gmc-*"
-  },
+  "bin": [
+    "./gmc-*"
+  ],
   "keywords": [
     "blockchain",
     "crypto",
@@ -31,8 +31,8 @@
     "prepare": "yarn clone && yarn build",
     "clone": "git clone https://github.com/Musicoin/go-musicoin",
     "build": "yarn build.darwin/386 && yarn build.darwin/amd64 && yarn build.windows",
-    "build.darwin/386": "cd go-musicoin && build/env.sh go run build/ci.go xgo -- --go=latest --targets=darwin/386 -v --dest ../ ./cmd/gmc",
-    "build.darwin/amd64": "cd go-musicoin && build/env.sh go run build/ci.go xgo -- --go=latest --targets=darwin/amd64 -v --dest ../ ./cmd/gmc",
+    "build.darwin/386": "cd go-musicoin && build/env.sh go run build/ci.go xgo -- --go=latest --targets=darwin/386 -v ./cmd/gmc",
+    "build.darwin/amd64": "cd go-musicoin && build/env.sh go run build/ci.go xgo -- --go=latest --targets=darwin/amd64 -v ./cmd/gmc",
     "test": "ls gmc && rm -rf go-musicoin"
   }
 }
