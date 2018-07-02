@@ -34,7 +34,7 @@
   "scripts": {
     "prepare": "yarn clean && yarn clone && yarn patch && yarn build && yarn permissions && yarn placement",
     "clean": "rm -rf ./gmc ./go-musicoin",
-    "clone": "git clone git@github.com:Musicoin/go-musicoin.git",
+    "clone": "git clone https://github.com/Musicoin/go-musicoin",
     "patch": "sed -i 's/1.7/1.10/g' go-musicoin/build/ci.go",
     "build": "yarn build.darwin && yarn build.linux && yarn build.windows",
     "build.darwin": "cd go-musicoin && make gmc-darwin",
