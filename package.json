@@ -15,7 +15,9 @@
     "url": "https://github.com/Musicoin/gmc-bin.git"
   },
   "bin": [
-    "./bin/gmc-"
+    "./bin/gmc-darwin-10.6-386","./bin/gmc-darwin-10.6-amd64",
+    "./bin/gmc-linux-386","./bin/gmc-linux-amd64",
+    "./bin/gmc-windows-4.0-386.exe","./bin/gmc-windows-4.0-amd64.exe"
   ],
   "keywords": [
     "blockchain",
