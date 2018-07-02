@@ -29,7 +29,7 @@
   ],
   "engines": {
     "node": ">=8.0.0",
-    "yarn": ">=1.7.0"
+    "yarn": ">=1.0.0"
   },
   "scripts": {
     "prepare": "yarn clean && yarn clone && yarn patch && yarn build && yarn permissions && yarn placement",
