@@ -8,9 +8,9 @@ before_install:
   - export PATH=$HOME/.yarn/bin:$PATH
   - git config --local user.name "etaletai13"
   - git config --local user.email "parker.casey@gmail.com"
+after_success:
   - git remote add upstream https://etaletai13:$GH_TOKEN@github.com/etaletai13/gmc
   - git fetch --unshallow upstream
-after_success:
   - git add bin/*
   - git branch -d latest
   - git commit -am "build $TRAVIS_BUILD_NUMBER"
