@@ -8,6 +8,7 @@ before_install:
   - export PATH=$HOME/.yarn/bin:$PATH
   - git config --local user.name "etaletai13"
   - git config --local user.email "parker.casey@gmail.com"
+  - git remote remove origin
   - git remote add origin https://etaletai13:$GH_TOKEN@github.com/etaletai13/gmc
   - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" 1>/dev/null
   - git fetch origin -q
