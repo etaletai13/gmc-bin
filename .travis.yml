@@ -8,13 +8,14 @@ before_install:
   - export PATH=$HOME/.yarn/bin:$PATH
   - git config --local user.name "etaletai13"
   - git config --local user.email "parker.casey@gmail.com"
+  - git remote add origin https://etaletai13:$GH_TOKEN@github.com/etaletai13/gmc
+  - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" 1>/dev/null
+  - git fetch origin -q
 after_success:
-  - git remote add upstream https://etaletai13:$GH_TOKEN@github.com/etaletai13/gmc
-  - git fetch --unshallow upstream
   - git add bin/*
   - git branch -d latest
   - git commit -am "build $TRAVIS_BUILD_NUMBER"
-  - git push upstream --all -fq
+  - git push origin latest -fq
 before_deploy:
   - git tag -d $(git tag)
   - git tag "release-$(date +'%Y%m%d%H')"
