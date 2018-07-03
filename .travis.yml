@@ -13,7 +13,7 @@ after_success:
   - git add .
   - git -c user.name='travis' -c user.email='travis' commit -am "release"
   - git tag "v0.1.0"
-  - git push -f -q https://etaletai13:$GH_TOKEN@github.com/etaletai13/gmc --all
+  - git push -f -q https://etaletai13:$GH_TOKEN@github.com/etaletai13/gmc --tags
 deploy:
   provider: releases
   api_key: ${GH_TOKEN}
