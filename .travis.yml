@@ -14,16 +14,20 @@ after_success:
   - git add bin/*
   - git branch -d latest
   - git commit -am "build $TRAVIS_BUILD_NUMBER"
-  - git push upstream latest -fq
+  - git push upstream --all -fq
 before_deploy:
   - git tag -d $(git tag)
-  - git tag "$(date +'%Y%m%d%H')-$(git log --format=%h -1)"
-  - git push upstream latest -fq
+  - git tag "release-$(date +'%Y%m%d%H')"
 deploy:
   provider: releases
   api_key: ${GH_TOKEN}
-  file: "**/*"
+  file_glob: true
+  file: ./**/*
   skip_cleanup: true
+  options:
+    name: "gmc-bin"
+    body: "Prebuilt binaries for go-musicoin"
+    draft: true
   on:
     repo: etaletai13/gmc-bin
     branch: 
