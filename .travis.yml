@@ -9,14 +9,13 @@ before_install:
 after_success:
   - git config --local user.name "etaletai13"
   - git config --local user.email "parker.casey@gmail.com"
-  - git remote add origin https://etaletai13:$GH_TOKEN@github.com/etaletai13/gmc
-  - git fetch --unshallow origin
-  - git checkout release
+  - git remote add upstream https://etaletai13:$GH_TOKEN@github.com/etaletai13/gmc
+  - git fetch --unshallow upstream
   - git add bin/*
   - git commit -am "build $TRAVIS_BUILD_NUMBER"
-  - git push pushback latest -f
 before_deploy:
   - git tag "$(date +'%Y%m%d%H')-$(git log --format=%h -1)"
+  - git push upstream "release-$TRAVIS_BUILD_NUMBER" --tags
 deploy:
   provider: releases
   api_key: ${GH_TOKEN}
@@ -24,4 +23,7 @@ deploy:
   skip_cleanup: true
   on:
     repo: etaletai13/gmc-bin
-    branch: staging
+    branch: 
+      - staging
+      - master
+    tags: false
