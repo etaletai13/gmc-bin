@@ -12,8 +12,8 @@ after_success:
   - git add .
   - git commit -am "build $TRAVIS_BUILD_NUMBER"
   - git remote add pushback https://etaletai13:$GH_TOKEN@github.com/etaletai13/gmc
-  - git branch -d latest
   - git checkout -b latest
+  - git fetch --unshallow pushback
   - git push pushback latest -fq
 deploy:
   provider: releases
