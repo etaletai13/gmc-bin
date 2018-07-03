@@ -6,16 +6,19 @@ services:
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.7.0
   - export PATH=$HOME/.yarn/bin:$PATH
-after_success:
   - git config --local user.name "etaletai13"
   - git config --local user.email "parker.casey@gmail.com"
   - git remote add upstream https://etaletai13:$GH_TOKEN@github.com/etaletai13/gmc
   - git fetch --unshallow upstream
+after_success:
   - git add bin/*
+  - git branch -d latest
   - git commit -am "build $TRAVIS_BUILD_NUMBER"
+  - git push upstream latest -fq
 before_deploy:
+  - git tag -d $(git tag)
   - git tag "$(date +'%Y%m%d%H')-$(git log --format=%h -1)"
-  - git push upstream "release-$TRAVIS_BUILD_NUMBER" --tags
+  - git push upstream latest -fq
 deploy:
   provider: releases
   api_key: ${GH_TOKEN}
@@ -24,6 +27,4 @@ deploy:
   on:
     repo: etaletai13/gmc-bin
     branch: 
-      - staging
-      - master
-    tags: false
+      - latest
