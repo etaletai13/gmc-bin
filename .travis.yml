@@ -13,8 +13,9 @@ before_install:
   - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" 1>/dev/null
   - git fetch origin -q
 after_success:
-  - git add bin/*
+  - git add bin/gmc-*
   - git branch -d latest
+  - git checkout -b latest
   - git commit -am "build $TRAVIS_BUILD_NUMBER"
   - git push origin latest -fq
 before_deploy:
