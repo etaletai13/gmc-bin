@@ -1,4 +1,37 @@
 language: node_js
-node_js:
-- '0.11'
-- '0.10'
+node_js: 
+  - "8.0.0"
+services:
+  - docker
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.7.0
+  - export PATH=$HOME/.yarn/bin:$PATH
+after_success:
+  - git config --local user.name "etaletai13"
+  - git config --local user.email "parker.casey@gmail.com"
+  - git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*" 1>/dev/null
+  - git remote remove origin
+  - git remote add origin https://etaletai13:$GH_TOKEN@github.com/etaletai13/gmc
+  - git fetch origin -q
+  - git add bin/gmc-*
+  - git branch -d latest
+  - git checkout -b latest
+  - git commit -am "build $TRAVIS_BUILD_NUMBER"
+  - git push origin latest -fq
+before_deploy:
+  - git tag -d $(git tag)
+  - git tag "release-$(date +'%Y%m%d%H')"
+deploy:
+  provider: releases
+  api_key: ${GH_TOKEN}
+  file_glob: true
+  file: ./**/*
+  skip_cleanup: true
+  options:
+    name: "gmc-bin"
+    body: "Prebuilt binaries for go-musicoin"
+    draft: true
+  on:
+    repo: etaletai13/gmc-bin
+    branch: 
+      - latest
