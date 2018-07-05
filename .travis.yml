@@ -6,12 +6,10 @@ services:
 before_install:
 - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.7.0
 - export PATH=$HOME/.yarn/bin:$PATH
+after_success:
+- rm -rf go-musicoin
 before_deploy:
 - git add bin/gmc-*
-- git add node_modules/**/*
-- git add yarn.lock
-- git rm .travis.yml
-- rm -rf go-musicoin
 - sh .push.sh deploy
 deploy:
   provider: npm
