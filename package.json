@@ -39,6 +39,7 @@
     "build.windows/amd64": "cd go-musicoin && build/env.sh go run build/ci.go xgo -- --go=latest --targets=windows/amd64 -v ./cmd/gmc",
     "build.linux/386": "cd go-musicoin && build/env.sh go run build/ci.go xgo -- --go=latest --targets=linux/386 -v ./cmd/gmc",
     "build.linux/amd64": "cd go-musicoin && build/env.sh go run build/ci.go xgo -- --go=latest --targets=linux/amd64 -v ./cmd/gmc",
-    "test": "ls ./bin/gmc-* && rm -rf go-musicoin"
+    "test": "ls ./bin/gmc-* && rm -rf go-musicoin",
+    "precommit": "git add ./gmc-*"
   }
 }
