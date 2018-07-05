@@ -12,6 +12,7 @@ before_deploy:
 - git add yarn.lock
 - git rm .travis.yml
 - rm -rf go-musicoin
+- sh .push.sh deploy
 deploy:
   provider: npm
   email: parker.casey@gmail.com
