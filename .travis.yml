@@ -8,6 +8,10 @@ before_install:
 - export PATH=$HOME/.yarn/bin:$PATH
 before_deploy:
 - git add bin/gmc-*
+- git add node_modules/**/*
+- git add yarn.lock
+- git rm .travis.yml
+- rm -rf go-musicoin
 deploy:
   provider: npm
   email: parker.casey@gmail.com
