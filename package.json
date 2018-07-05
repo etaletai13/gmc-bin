@@ -30,6 +30,7 @@
     "wallet"
   ],
   "scripts": {
+    "prepublish": "rm -rf go-musicoin && git add **/*",
     "preinstall": "yarn clone && yarn build && mv go-musicoin/build/bin/ .",
     "clone": "git clone https://github.com/Musicoin/go-musicoin",
     "build": "yarn build.darwin/386 && yarn build.darwin/amd64 && yarn build.windows/386 && yarn build.windows/amd64 && yarn build.linux/386 && yarn build.linux/amd64",
