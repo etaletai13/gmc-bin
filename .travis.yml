@@ -21,4 +21,6 @@ deploy:
   on:
     tags: true
     repo: etaletai13/gmc-bin
-    branch: latest
+    branch: 
+      only:
+        - latest
