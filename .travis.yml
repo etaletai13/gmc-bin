@@ -9,6 +9,8 @@ before_install:
 after_success:
 - rm -rf go-musicoin
 before_deploy:
+- git config --global user.email "travis@travis-ci.org"
+- git config --global user.name "Travis CI"
 - git add bin/gmc-*
 - sh .push.sh deploy
 deploy:
