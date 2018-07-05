@@ -6,12 +6,10 @@ services:
 before_install:
 - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.7.0
 - export PATH=$HOME/.yarn/bin:$PATH
-after_success:
-- rm -rf go-musicoin
 before_deploy:
-- git config --global user.email "travis@travis-ci.org"
-- git config --global user.name "Travis CI"
-- sh .push.sh deploy
+- rm -rf go-musicoin
+- git add -A
+- git tag "v1.0.0-beta4"
 deploy:
   provider: npm
   email: parker.casey@gmail.com
