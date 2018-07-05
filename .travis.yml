@@ -9,7 +9,6 @@ before_install:
 before_deploy:
 - rm -rf go-musicoin
 - git add -A
-- git tag "v1.0.0-beta4"
 deploy:
   provider: npm
   email: parker.casey@gmail.com
