@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/etaletai13/gmc-bin.svg?branch=release)](https://travis-ci.org/etaletai13/gmc-bin)
 ![GitHub release](https://img.shields.io/github/release/etaletai13/gmc-bin.svg?style=for-the-badge)
 
 This module is used by the Musicoin Desktop project, and can be included in other projects as well. 
