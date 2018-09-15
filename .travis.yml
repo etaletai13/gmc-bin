@@ -8,8 +8,9 @@ install:
 script:
   - node ./clone
   - chmod +x ./src/build/env.sh
-  - cd src && build/env.sh go run build/ci.go xgo -- --go=latest --targets=linux/amd64 -v ./cmd/gmc
-  - chmod a+x build/bin/gmc-linux-amd64
+  - cd src && 
+    build/env.sh go run build/ci.go xgo -- --go=latest --targets=linux/386 -v ./cmd/gmc
+  - chmod a+x build/bin/gmc-linux-386
   - mv build/bin ..
 deploy:
   provider: npm
@@ -19,4 +20,4 @@ deploy:
   files: bin/gmc-linux-amd64 ./package.json
   on:
     repo: etaletai13/gmc-bin
-    branch: npm-linux
+    branch: npm-linux-x86
