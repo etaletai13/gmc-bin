@@ -16,7 +16,7 @@ script:
   - sudo chmod a+x build/bin/gmc-windows-amd64.exe
   - mv build/bin/gmc-windows-amd64 ../gmc
   - cd ..
-  - rm -rf clone src .*
+  - rm -rf src
 deploy:
   provider: npm
   email: parker.casey@gmail.com
