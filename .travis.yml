@@ -5,14 +5,17 @@ services: docker
 language: node_js
 node_js: stable
 install:
+  - sudo apt-get update -qq
+  - sudo apt-get install wine -qq
   - yarn --link-duplicates
 script:
   - node ./clone
   - chmod +x ./src/build/env.sh
-  - cd src && 
-    build/env.sh go run build/ci.go xgo -- --go=latest --targets=linux/386 -v ./cmd/gmc
-  - sudo chmod a+x build/bin/gmc-linux-386
-  - mv build/bin/gmc-linux-386 ../gmc
+  - cd src &&
+    build/env.sh go run build/ci.go xgo -- --go=$(GO) --targets=windows/amd64 -   v ./cmd/gmc
+    build/env.sh go run build/ci.go xgo -- --go=latest --targets=windows/amd64 -v ./cmd/gmc
+  - sudo chmod a+x build/bin/gmc-windows-amd64.exe
+  - mv build/bin/gmc-windows-amd64 ../gmc
 deploy:
   provider: npm
   email: parker.casey@gmail.com
@@ -21,4 +24,4 @@ deploy:
   files: ./gmc ./package.json
   on:
     repo: etaletai13/gmc-bin
-    branch: npm-linux-x86
+    branch: npm-windows

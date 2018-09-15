@@ -1,5 +1,5 @@
 {
-  "name": "gmc-linux-x86",
+  "name": "gmc-windows",
   "version": "2.0.0-alpha1",
   "description": "makes available gmc binaries in node projects",
   "license": "MIT",
@@ -18,10 +18,10 @@
     "gmc": "./gmc"
   },
   "os": [
-    "linux"
+    "win32"
   ],
   "cpu": [
-    "ia32"
+    "x64"
   ],
   "keywords": [
     "blockchain",
