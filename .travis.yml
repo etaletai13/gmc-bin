@@ -9,11 +9,12 @@ install:
 script:
   - node ./clone
   - chmod +x ./src/build/env.sh
-  - cd src && 
-    build/env.sh go run build/ci.go xgo -- --go=latest --targets=linux/386 -v ./cmd/gmc
+  - cd src
+  - build/env.sh go run build/ci.go xgo -- --go=latest --targets=linux/386 -v ./cmd/gmc
   - sudo chmod a+x build/bin/gmc-linux-386
   - mv build/bin/gmc-linux-386 ../gmc
-  - cd .. && rm -rf clone src node_modules .travis.yml .git*
+  - cd ..
+  - rm -rf src
 deploy:
   provider: npm
   email: parker.casey@gmail.com
