@@ -15,7 +15,7 @@
     "url": "https://github.com/Musicoin/gmc-bin.git"
   },
   "bin": {
-    "gmc": "./gmc"
+    "gmc": "./gmc.exe"
   },
   "os": [
     "win32"
@@ -33,9 +33,6 @@
     "musicoin",
     "wallet"
   ],
-  "scripts": {
-    "test": "ls ./bin/"
-  },
   "devDependencies": {
     "github-download": "latest"
   }

@@ -13,8 +13,8 @@ script:
   - chmod +x ./src/build/env.sh
   - cd src
   - build/env.sh go run build/ci.go xgo -- --go=latest --targets=windows/amd64 -v ./cmd/gmc
-  - sudo chmod a+x build/bin/gmc-windows-amd64.exe
-  - mv build/bin/gmc-windows-amd64 ../gmc
+  - sudo chmod a+x build/bin/gmc-windows-*
+  - mv build/bin/gmc-windows-* ../gmc.exe
   - cd ..
   - rm -rf clone src node_modules .travis.yml .git*
 deploy:
