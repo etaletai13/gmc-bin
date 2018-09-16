@@ -1,4 +1,7 @@
-os: osx
+os: linux
+dist: trusty
+sudo: required
+services: docker
 language: node_js
 node_js: stable
 install:
