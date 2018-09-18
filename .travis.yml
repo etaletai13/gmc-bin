@@ -11,8 +11,8 @@ script:
   - chmod +x ./src/build/env.sh
   - cd src
   - build/env.sh go run build/ci.go xgo -- --go=latest --targets=darwin/386 -v ./cmd/gmc
-  - sudo chmod a+x build/bin/gmc-darwin-386
-  - mv build/bin/gmc-darwin-386 ../gmc
+  - sudo chmod a+x build/bin/gmc-*
+  - mv build/bin/gmc-* ../gmc
   - cd ..
   - rm -rf clone src node_modules .travis.yml .git*
 deploy:
