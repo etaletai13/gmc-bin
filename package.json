@@ -15,10 +15,17 @@
     "url": "https://github.com/Musicoin/gmc-bin.git"
   },
   "optionalDependencies": {
-    "gmc-linux": "^2.0.0-alpha1",
-    "gmc-linux-x86": "^2.0.0-alpha1",
-    "gmc-windows": "^2.0.0-alpha1",
-    "gmc-windows-x86": "^2.0.0-alpha1"
+    "gmc-darwin": "2.0.0-alpha1",
+    "gmc-darwin-x86": "2.0.0-alpha1",
+    "gmc-linux": "2.0.0-alpha1",
+    "gmc-linux-x86": "2.0.0-alpha1",
+    "gmc-windows": "2.0.0-alpha1",
+    "gmc-windows-x86": "2.0.0-alpha1"
+  },
+  "scripts": {
+    "test2": "echo \"Testing direct bin...\\n\" && ./node_modules/.bin/gmc version",
+    "test1": "echo \"Testing linked bin...\\n\" && yarn gmc version",
+    "test": "yarn test1 && yarn test2"
   },
   "keywords": [
     "blockchain",

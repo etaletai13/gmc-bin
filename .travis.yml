@@ -3,17 +3,6 @@ dist: trusty
 services: docker
 language: node_js
 node_js: stable
-install:
-  - yarn --link-duplicates
-script:
-  - node ./clone
-  - chmod +x ./src/build/env.sh
-  - cd src
-  - build/env.sh go run build/ci.go xgo -- --go=latest --targets=darwin/amd64 -v ./cmd/gmc
-  - sudo chmod a+x build/bin/gmc-*
-  - mv build/bin/gmc-* ../gmc
-  - cd ..
-  - rm -rf clone src node_modules .travis.yml .git*
 deploy:
   provider: npm
   email: parker.casey@gmail.com
@@ -23,4 +12,4 @@ deploy:
   files: '*'
   on:
     repo: etaletai13/gmc-bin
-    branch: npm-windows-x86
+    branch: dev6
